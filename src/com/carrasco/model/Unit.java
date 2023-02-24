@@ -9,7 +9,7 @@ public abstract class Unit {
     public Unit() {
     }
 
-    public abstract double convert();
+    public abstract double convert(double quantity);
 
     public int getId() {
         return id;
