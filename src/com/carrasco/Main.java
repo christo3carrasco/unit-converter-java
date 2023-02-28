@@ -1,7 +1,10 @@
 package com.carrasco;
 
+import com.carrasco.view.Frame;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("This is an easter egg!");
+        Frame frame = new Frame();
+        frame.setVisible(true);
     }
 }
