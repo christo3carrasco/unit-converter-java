@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainView extends JFrame {
-    private JTabbedPane tabbedPane;
+    private JPanel contentPane;
     private FirstView firstView;
     private SecondView secondView;
     private ThirdView thirdView;
@@ -13,19 +13,19 @@ public class MainView extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Unit converter - Christo");
         setPreferredSize(new Dimension(400, 400));
-        setLayout(new BorderLayout());
         setResizable(false);
 
+        contentPane = new JPanel();
+        contentPane.setLayout(new CardLayout());
+        setContentPane(contentPane);
+
         firstView = new FirstView();
+        contentPane.add(firstView, "firstView");
         secondView = new SecondView();
+        contentPane.add(secondView, "secondView");
         thirdView = new ThirdView();
+        contentPane.add(thirdView, "thirdView");
 
-        tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("Paso 1", firstView);
-        tabbedPane.addTab("Paso 2", secondView);
-        tabbedPane.addTab("Paso 3", thirdView);
-
-        add(tabbedPane, BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -41,5 +41,20 @@ public class MainView extends JFrame {
 
     public ThirdView getThirdView() {
         return thirdView;
+    }
+
+    public void showFirstView() {
+        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+        cardLayout.show(contentPane, "firstView");
+    }
+
+    public void showSecondView() {
+        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+        cardLayout.show(contentPane, "secondView");
+    }
+
+    public void showThirdView() {
+        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+        cardLayout.show(contentPane, "thirdView");
     }
 }
